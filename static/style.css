@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#tickers-grid {
+     display: flex;
+     flex-wrap: wrap;
+}
+
+#add-ticker-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.stock-box {
+    width: 200px;
+    height: 200рх;
+    border: 1px solid #333;
+    margin: 10px;
+    padding: 10px;
+    transition: background-cotor 0.5s;
+    background: #8c8987;
+}
+
+ .dark-red {
+     color: #880000;
+ }
+ 
+ .red{
+     color: #FF0000;
+ }
+
+ .gray{
+     color: #808080;
+ }
+ .green {
+    color: #118a11;
+ }
+ .dark-green {
+    color: #006600; 
+ }
+
+ .stock-box {
+    position: relative;
+    width: 225px;
+    height: 150px;
+    border: 1px solid #040404;
+    margin:  10px;
+    padding: 10px;
+    color: rgb(7, 3, 0);
+    border-radius: 20px;
+ }
+
+.red-flash {
+    transition: background-color 1s;
+    background-color: #ffcccc !important; /* Light red */
+}
+.green-flash{
+    transition: background-color 1s;
+    background-color: #ccffcc !important; /* light green */
+}
+
+.gray-flash {
+    transition: background-color 1s;
+    background-color: #ccc !important; /* Light green */
+}
+
+#timer {
+    color: white;
+}
+
+body {
+    background-image: url('resources/space.jpg');
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2; /* Dodatkowy kolor tła dla przykładu */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ustawienie minimalnej wysokości na 100% widoku (viewport) */
+}
+
+.container {
+    width: 100%; /* Pełna szerokość na wszystkich urządzeniach */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Dodanie cienia */
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Elastyczne dostosowanie kontenera do dostępnej przestrzeni */
+}
+
+#top-bar {
+    height: 100px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#add-button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 2% 4%; /* Elastyczny rozmiar guzika */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#body-section {
+    flex-grow: 1; /* Elastyczne dostosowanie sekcji body do dostępnej przestrzeni */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#bottom-bar {
+    height: 75px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-icon {
+    font-size: 2em; /* Rozmiar ikon */
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-icon:hover {
+    color: #45a049;
+}
+
+.active-icon {
+    color: #45a049; /* Zielony kolor dla aktywnej ikony */
+}
+
+/* Media query dla urządzeń o szerokości ekranu mniejszej niż 500px */
+@media only screen and (max-width: 500px) {
+    #top-bar {
+        height: 80px; /* Mniejsza wysokość paska górnego na mniejszych urządzeniach */
+    }
+
+    #add-button {
+        font-size: 0.8em; /* Zmniejszenie rozmiaru czcionki na mniejszych urządzeniach */
+    }
+
+    #bottom-bar {
+        height: 80px; /* Mniejsza wysokość paska dolnego na mniejszych urządzeniach */
+    }
+
+    .nav-icon {
+        font-size: 1.5em; /* Zmniejszenie rozmiaru ikon na mniejszych urządzeniach */
+    }
+}
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #040404;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+
+.loader--hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+.loader::after{
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #dddddd;
+    border-top-color: #009678;
+    border-radius: 50%;
+    animation: loading 1s ease infinite;
+}
+@keyframes loading {
+    from {transform: rotate(0turn)}
+    to {transform: rotate(1turn)}
+}
+
+/* Media query dla urządzeń o szerokości ekranu większej niż 1200px */
+@media only screen and (min-width: 1200px) {
+    #top-bar {
+        position: fixed;
+        top: 0;
+        width: 66.666%;
+        z-index: 1000;
+        height: 100px;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    #bottom-bar {
+        position: fixed;
+        bottom: 0;
+        width: 66.666%;
+        z-index: 1000;
+        height: 75px;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .container {
+        width: 66.666%; /* 2/3 szerokości ekranu na większych ekranach */
+        margin: auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Dodanie cienia dla efektu 3D */
+        background: linear-gradient(to right, #12063b, #09555c);
+    }
+}
+
+.remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.article-link {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #006400;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.publication-date {
+    margin-left: 10px;
+    color: white;
+}
+
+.button {
+    padding: 5px 15px;
+    margin: 5px;
+    background-color: #228B22;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.categories {
+    margin-left: 5px;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 24px;
+}
+
+.selected {
+    border: 4px solid #8B0000;
+}

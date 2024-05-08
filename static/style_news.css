@@ -1,0 +1,66 @@
+/* style.css */
+
+body {
+    background-color: #f0f0f0; /* Ustawienie koloru tła strony */
+    font-family: 'Arial', sans-serif; /* Ustawienie czcionki */
+
+    background-image: url('resources/space.jpg');
+    background-size: cover;
+    margin-top: 50px;
+    margin-left: 225px;
+    margin-right: 225px;
+
+
+}
+
+h1, h2 {
+    color: #333; /* Kolor tekstu dla nagłówków */
+}
+
+#ticker-info {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: #fff; /* Kolor tła komórek tabeli */
+    color: #333; /* Kolor tekstu w komórkach tabeli */
+}
+
+#ticker-name {
+color: aqua;
+}
+
+#back-button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; /* Kolor tła */
+    color: #fff; /* Kolor tekstu */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  #back-button:hover {
+    background-color: #45a049; /* Kolor tła po najechaniu myszą */
+    transform: scale(1.05); /* Efekt powiększenia po najechaniu myszą */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień po najechaniu myszą */
+  }
+
+  #back-button ion-icon {
+    font-size: 36px; /* Rozmiar ikony */
+
+  }

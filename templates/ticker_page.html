@@ -1,0 +1,44 @@
+<!-- ticker_page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticker Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_ticker_page.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="{{ url_for('static', filename='ticker_page.js')}}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <button id="back-button">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        
+      </button>
+    <h1 id="ticker-name">{{ ticker }}</h1>
+    
+
+    <div id="ticker-info">
+        <h2 id="ticker-name">Stock Information for {{ ticker }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in ticker_info.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

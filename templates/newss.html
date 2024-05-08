@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockView</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="{{ url_for('static', filename='news.js')}}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        h1, h2 {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div class="container">
+        <div id="top-bar" class="sticky-top">
+            <img src="../static/resources/logo-white.png" alt="logo" width="200" height="50" />
+        </div>
+	    <br><br><br><br>
+        <div id="body-section">
+            <h1>News</h1>
+            <br>
+            <p class="categories">Categories:</p>
+            <form action="/newss" method="post">
+                <input type="hidden" name="category" id="categoryInput">
+                <button id="buttonKryptowaluty" class="button {{ 'selected' if selected_category == 'kryptowaluty' else '' }}" onclick="submitCategory('kryptowaluty'); highlightButton('buttonKryptowaluty')">Cryptocurrencies</button>
+                <button id="buttonForex" class="button {{ 'selected' if selected_category == 'forex' else '' }}" onclick="submitCategory('forex'); highlightButton('buttonForex')">Forex</button>
+                <button id="buttonFinanse" class="button {{ 'selected' if selected_category == 'finanse' else '' }}" onclick="submitCategory('finanse'); highlightButton('buttonFinanse')">Finance</button>
+            </form>
+
+            <br><br>
+            <ul>
+                {% for article in news %}
+                    <li>
+                        <a href="{{ article.link }}" class="article-link">{{ article.title }}</a>
+                        <p class="publication-date">Published: {{ article.published }}</p>
+                        <br>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <br><br>
+        <div id="bottom-bar">
+            <a href="/index" class="list">
+                <ion-icon id="icon-home" class="nav-icon" name="home-outline"></ion-icon>
+            </a>
+            <a href="/newss" class="list">
+                <ion-icon id="icon-newss" class="nav-icon" name="newspaper-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <script>
+    
+        window.addEventListener('load', () => {
+            const loader = document.querySelector(".loader");
+    
+            loader.classList.add("loader--hidden");
+        
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild(loader);
+            });
+        });
+    </script>
+</body>
+</html>

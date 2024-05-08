@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockView</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+    <script src="{{ url_for('static', filename='BottomTopBar.js')}}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div class="container">
+        <div id="top-bar" class="sticky-top">
+            <img src="../static/resources/logo-white.png" alt="logo" width="200" height="50" />
+            <p id="timer">Next update in <span id="counter"></span> seconds </p>
+            <form id="add-ticker-form">
+                <input type="text" id="new-ticker" placeholder="Add Ticker" required>
+                <button type="submit" id="add-button">+</button>
+            </form>
+        </div>
+        <br><br><br><br><br>
+        <div id="tickers-grid"></div>
+        
+        <div id="body-section">
+            <!-- Zawartość sekcji body -->
+        </div>
+        <br><br><br>
+        <div id="bottom-bar">
+            <a href="/index" class="list">
+                <ion-icon id="icon-home" class="nav-icon" name="home-outline"></ion-icon>
+            </a>
+            <a href="/newss" class="list">
+                <ion-icon id="icon-newss" class="nav-icon" name="newspaper-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    
+<script>
+    
+    window.addEventListener('load', () => {
+        const loader = document.querySelector(".loader");
+
+        loader.classList.add("loader--hidden");
+    
+        loader.addEventListener("transitionend", () => {
+            document.body.removeChild(loader);
+        });
+    });
+</script>
+</body>
+</html>
